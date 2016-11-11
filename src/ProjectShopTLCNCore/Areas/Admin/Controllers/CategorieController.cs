@@ -22,5 +22,9 @@ namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 			//var model = new CategoriesDao();
 			//return View(model.ListAll());
 		}
+		public IActionResult Create()
+		{
+			return View();
+		}
 	}
 }
