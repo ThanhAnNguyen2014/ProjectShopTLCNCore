@@ -24,7 +24,7 @@ System.register(["@angular/core"], function(exports_1, context_1) {
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: "demo",
-                        template: "<h1>Hello app </h1><div>Work in progress...</div>"
+                        template: "<h1>Tieu Luan Chuyen Nganh</h1><div>Process working....</div>"
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

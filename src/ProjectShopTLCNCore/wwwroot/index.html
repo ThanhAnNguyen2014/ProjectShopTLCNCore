@@ -4,6 +4,7 @@
 	<base href="/">
 	<title>Online Shop Electronic</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<!-- Step 1. Load libraries -->
 	<!-- Polyfill(s) for older browsers -->
@@ -15,13 +16,22 @@
 	<!-- Step 2. Configure SystemJS -->
 	<script src="systemjs.config.js"></script>
 	<script>
-        System.import('app').catch(function (err) { console.error(err);});
+		System.import('app').catch(function (err) { console.error(err); });
 	</script>
+	<style>
+		i {
+			margin-left: 45%;
+			margin-top: 20%;
+		}
+	</style>
 </head>
 
 <!-- Step 3. Display the application -->
 <body>
 	<!-- Application PlaceHolder -->
-	<demo>Loading...</demo>
+	<demo>
+		<i class="fa fa-spinner fa-pulse fa-5x fa-fw " style="color:red">
+		</i><span class="sr-only">Loading...</span>
+	</demo>
 </body>
 </html>
