@@ -33,40 +33,49 @@
 				</div>
 			</div>
 			<div class="box-content">
-				<form class="form-horizontal">
-					<fieldset>
-						<div class="control-group">
-							<label  asp-for="CategoryName" class="control-label" for="typeahead">Tên loại sản phẩm</label>
-							<div class="controls">
-								<input asp-for="CategoryName" type="text" class="span6 typeahead" id="CategoryName" placeholder="Nhập loại sản phẩm">
-								<span asp-validation-for="CategoryName" class="text-danger"></span>
+				@using (Html.BeginForm("Create", "Categorie", FormMethod.Post, new {@class= "form-horizontal" }))
+				{
+					@*<form class="form-horizontal" action="Create" method="post">*@
+						<fieldset>
+							<div class="control-group">
+								<label class="control-label" for="typeahead">Tên loại sản phẩm</label>
+								<div class="controls">
+									@Html.TextBoxFor(model => model.CategoryName, htmlAttributes : new { @class = "span6 typeahead", @placeholder = "Nhập loại sản phẩm", @id = "CategoryName" })
+									@*<input asp-for="CategoryName" type="text" class="span6 typeahead" id="CategoryName" placeholder="Nhập loại sản phẩm">*@
+									<span asp-validation-for="CategoryName" class="text-danger"></span>
+								</div>
 							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="fileInput">Chọn ảnh</label>
-							<div class="controls">
-								<input class="input-file uniform_on" id="Picture" type="file">
+							<div class="control-group">
+								<label class="control-label" for="fileInput">Chọn ảnh</label>
+								<div class="controls">
+									@*<input class="input-file uniform_on" id="Picture" asp-for="Picture" type="file">*@
+									@Html.TextBoxFor(model => model.Picture, htmlAttributes: new { @class = "input-file uniform_on", @id = "Picture", @type = "file" })
+								</div>
 							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="typeahead">Hiển thị</label>
-							<div class="controls">
-								<input type="checkbox" class="span6 " id="IsDisplay">
+							<div class="control-group">
+								<label class="control-label" asp-for="IsDisplay" for="typeahead">Hiển thị</label>
+								<div class="controls">
+									@*<input type="checkbox" asp-for="IsDisplay" class="span6 " id="IsDisplay">*@
+									@Html.CheckBoxFor(mode => Model.IsDisplay,  htmlAttributes: new { @class = "span6", @type = "checkbox", @id = "IsDisplay" })
+								</div>
 							</div>
-						</div>
 
-						<div class="control-group hidden-phone">
-							<label asp-for="CategoryName" class="control-label" for="textarea2">Mô tả</label>
-							<div class="controls">
-								<textarea class="cleditor" id="Description" rows="3"></textarea>
+							<div class="control-group hidden-phone">
+								<label asp-for="Description" class="control-label" for="textarea2">Mô tả</label>
+								<div class="controls">
+									@*<textarea asp-for="Description" class="cleditor" id="Description" rows="3"></textarea>*@
+									@Html.TextAreaFor(model=>model.Description, htmlAttributes: new { @class = "cleditor", @id = "Description", @rows = "3" } )
+								</div>
 							</div>
-						</div>
-						<div class="form-actions">
-							<button type="submit" class="btn btn-primary">Save changes</button>
-							<button type="reset" class="btn">Cancel</button>
-						</div>
-					</fieldset>
-				</form>
+							<div class="form-actions">
+								<button type="submit" class="btn btn-primary" >Create</button>
+								<button type="reset" class="btn">Cancel</button>
+							</div>
+						</fieldset>
+					@*</form>*@
+
+				}
+				
 
 			</div>
 		</div><!--/span-->

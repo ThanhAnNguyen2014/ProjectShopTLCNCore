@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using ProjectShopTLCNCore.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 {
@@ -15,16 +16,36 @@ namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 		{
 			db = _db;
 		}
-		public IActionResult Index()
+		public async Task< IActionResult> Index()
 		{
-			return View(db.Categories.ToList());
+			return View(await db.Categories.ToListAsync());
 
-			//var model = new CategoriesDao();
-			//return View(model.ListAll());
 		}
+		[HttpGet]
 		public IActionResult Create()
 		{
+			return View("Index");
+		}
+		[HttpPost]
+		public IActionResult Create(Categories categorie)
+		{
+			db.Categories.Add(categorie);
+			db.SaveChanges();
 			return View();
+		}
+		public IActionResult Edit(int? id)
+		{
+			return View();
+		}
+		public async Task<IActionResult> Details(int id)
+		{
+			//if (id == null)
+			//	return NotFound();
+			var model = await db.Categories.SingleOrDefaultAsync(m => m.CategoryId == id);
+			//if (model == null)
+			//	return NotFound();
+
+			return View(model); 
 		}
 	}
 }
