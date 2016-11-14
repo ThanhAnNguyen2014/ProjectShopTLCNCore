@@ -37,30 +37,46 @@ namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 					
 			return View(categorie);
 		}
-		public IActionResult Edit(int? id)
+		[HttpPost("Admin/Categorie/Edit/{id}")]
+		public IActionResult Edit(int id, Categories catego)
 		{
-			return View();
-		}
-		// delete
-		// POST: Movies/Delete/5
-		[HttpDelete]
-		public async Task<IActionResult> Delete(int CategoryId)
-		{
-			var model = await db.Categories.FirstOrDefaultAsync(m=>m.CategoryId== CategoryId);
-			db.Categories.Remove(model);
-			await db.SaveChangesAsync();
+			var categorie = db.Categories.SingleOrDefault(m=>m.CategoryId==id);
+
+			categorie.CategoryName = catego.CategoryName;
+			categorie.Description = catego.Description;
+			categorie.DisplayOrder = catego.DisplayOrder;
+			categorie.IsDisplay = catego.IsDisplay;
+			categorie.Picture = catego.Picture;
+			db.Categories.Update(categorie);
+			db.SaveChanges();
 			return RedirectToAction("Index");
 		}
-		
-		public async Task<IActionResult> Details(int id)
-		{
-			//if (id == null)
-			//	return NotFound();
-			var model = await db.Categories.SingleOrDefaultAsync(m => m.CategoryId == id);
-			//if (model == null)
-			//	return NotFound();
 
-			return View(model); 
+		// delete
+		// POST: Movies/Delete/5
+
+		[HttpGet("Admin/Categorie/Edit/{id}")]
+		public async Task<IActionResult>Edit(int? id)
+		{
+			if (id ==null)
+				return NotFound();
+			var model = await db.Categories.SingleOrDefaultAsync(m => m.CategoryId == id);
+			if (model == null)
+				return NotFound();
+			return View(model);
+		}
+
+		// POST: Cars/Delete/5
+		// Delete an object via a POST request
+		[ActionName("Delete")]
+		[HttpGet("Admin/Categorie/Delete/{id}")]
+		public IActionResult Delete(int? id)
+		{
+			var model = db.Categories.SingleOrDefault(m => m.CategoryId == id);
+			// Remove the car from the collection and save changes
+			db.Categories.Remove(model);
+			db.SaveChanges();
+			return RedirectToAction("Index");
 		}
 	}
 }

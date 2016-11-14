@@ -101,7 +101,7 @@ namespace ProjectShopTLCNCore
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
 
             app.UseMvc(routes =>
-            {
+			{
 				routes.MapRoute(
 					name: "areaRoute",
 					template: "{area:exists}/{controller=Home}/{action=Index}");
