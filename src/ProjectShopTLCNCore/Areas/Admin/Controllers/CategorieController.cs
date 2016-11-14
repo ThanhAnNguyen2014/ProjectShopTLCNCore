@@ -16,6 +16,7 @@ namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 		{
 			db = _db;
 		}
+		[HttpGet]
 		public async Task< IActionResult> Index()
 		{
 			return View(await db.Categories.ToListAsync());
@@ -24,19 +25,33 @@ namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 		[HttpGet]
 		public IActionResult Create()
 		{
-			return View("Index");
+			return View();
 		}
 		[HttpPost]
 		public IActionResult Create(Categories categorie)
 		{
-			db.Categories.Add(categorie);
-			db.SaveChanges();
-			return View();
+			
+				db.Categories.Add(categorie);
+				db.SaveChanges();
+			
+					
+			return View(categorie);
 		}
 		public IActionResult Edit(int? id)
 		{
 			return View();
 		}
+		// delete
+		// POST: Movies/Delete/5
+		[HttpDelete]
+		public async Task<IActionResult> Delete(int CategoryId)
+		{
+			var model = await db.Categories.FirstOrDefaultAsync(m=>m.CategoryId== CategoryId);
+			db.Categories.Remove(model);
+			await db.SaveChangesAsync();
+			return RedirectToAction("Index");
+		}
+		
 		public async Task<IActionResult> Details(int id)
 		{
 			//if (id == null)

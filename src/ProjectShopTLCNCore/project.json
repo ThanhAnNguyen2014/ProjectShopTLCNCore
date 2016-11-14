@@ -41,7 +41,9 @@
       "type": "build"
     },
     "Microsoft.EntityFrameworkCore.Design": "1.0.1",
-    "Microsoft.AspNetCore.Http.Extensions": "1.0.0"
+    "Microsoft.AspNetCore.Http.Extensions": "1.0.0",
+    "Microsoft.jQuery.Unobtrusive.Ajax": "3.2.3",
+    "jQuery": "3.1.1"
   },
 
   "tools": {
