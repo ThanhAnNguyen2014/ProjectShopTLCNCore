@@ -1,7 +1,7 @@
 {
   //"userSecretsId": "aspnet-ProjectShopTLCNCore-58ce39af-4986-48bd-a678-195845c8aa08",
 
-  "dependencies": {
+ "dependencies": {
     "Microsoft.NETCore.App": {
       "version": "1.0.1",
       "type": "platform"
@@ -11,7 +11,7 @@
     "Microsoft.AspNetCore.Diagnostics": "1.0.0",
     "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "1.0.0",
     "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0",
-    "Microsoft.AspNetCore.Mvc": "1.0.1",
+    "Microsoft.AspNetCore.Mvc": "1.0.0",
     "Microsoft.AspNetCore.Razor.Tools": {
       "version": "1.0.0-preview2-final",
       "type": "build"
@@ -43,7 +43,8 @@
     "Microsoft.EntityFrameworkCore.Design": "1.0.1",
     "Microsoft.AspNetCore.Http.Extensions": "1.0.0",
     "Microsoft.jQuery.Unobtrusive.Ajax": "3.2.3",
-    "jQuery": "3.1.1"
+  "jQuery": "3.1.1",
+  "Microsoft.NETCore": "5.0.1-rc2-24027"
   },
 
   "tools": {

@@ -11,7 +11,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using ProjectShopTLCNCore.Models;
 using Microsoft.AspNetCore.Mvc.Razor;
-using Microsoft.AspNetCore.Http;
 
 namespace ProjectShopTLCNCore
 {
@@ -68,9 +67,10 @@ namespace ProjectShopTLCNCore
 
 			services.AddMvc();
 
-            // Add application services.
 
-        }
+			// Add application services.
+
+		}
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
