@@ -1,7 +1,7 @@
 @model ProjectShopTLCNCore.Models.Categories
 
 @{
-	ViewData["Title"] = "Create";
+	ViewData["Title"] = "Edit";
 	Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -25,7 +25,7 @@
 	<div class="row-fluid sortable">
 		<div class="box span11">
 			<div class="box-header" data-original-title>
-				<h2><i class="halflings-icon edit"></i><span class="break"></span>Lo?i S?n Ph?m</h2>
+				<h2><i class="halflings-icon edit"></i><span class="break"></span>Lo?i s?n ph?m</h2>
 				<div class="box-icon">
 					<a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
 					<a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
@@ -33,14 +33,14 @@
 				</div>
 			</div>
 			<div class="box-content">
-				@using (Html.BeginForm("Edit", "Categorie", FormMethod.Post, new { @class = "form-horizontal" }))
+				@using (Html.BeginForm("Edit", "Categorie", FormMethod.Post, new { @class = "form-horizontal"} ))
 				{
-					
+
 					<fieldset>
 						<div class="control-group">
 							<label class="control-label" for="typeahead">Tên lo?i s?n ph?m</label>
 							<div class="controls">
-								@Html.TextBoxFor(model => model.CategoryName, htmlAttributes: new { @class = "span6 typeahead", @placeholder = "Nh?p lo?i s?n ph?m", @id = "CategoryName" })
+								@Html.TextBoxFor(model => model.CategoryName, htmlAttributes: new { @class = "span6 typeahead", @id = "CategoryName" })
 								<span asp-validation-for="CategoryName" class="text-danger"></span>
 							</div>
 						</div>
@@ -54,7 +54,7 @@
 						<div class="control-group">
 							<label class="control-label" for="fileInput">Ch?n ?nh</label>
 							<div class="controls">
-								@*<input class="input-file uniform_on" id="Picture" asp-for="Picture" type="file">*@
+								@*<input class="input-file uniform_on" id="Picture" asp-for="Picture" type="file", value="@img">*@
 								@Html.TextBoxFor(model => model.Picture, htmlAttributes: new { @class = "input-file uniform_on", @id = "Picture", @type = "file" })
 							</div>
 						</div>
@@ -66,7 +66,7 @@
 							</div>
 						</div>
 						<div class="control-group">
-							<label class="control-label" asp-for="IsDisplay" for="typeahead">Hi?n th?</label>
+							<label class="control-label" asp-for="IsDisplay" for="typeahead">Hi?n th?:</label>
 							<div class="controls">
 								@*<input type="checkbox" asp-for="IsDisplay" class="span6 " id="IsDisplay">*@
 								@Html.CheckBoxFor(mode => Model.IsDisplay, htmlAttributes: new { @class = "span6", @type = "checkbox", @id = "IsDisplay" })

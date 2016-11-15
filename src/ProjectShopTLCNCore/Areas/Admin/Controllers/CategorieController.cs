@@ -31,10 +31,12 @@ namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 		public IActionResult Create(Categories categorie)
 		{
 			
+			if (ModelState.IsValid)
+			{
 				db.Categories.Add(categorie);
 				db.SaveChanges();
-			
-					
+				return RedirectToAction("Index");
+			}							
 			return View(categorie);
 		}
 		[HttpPost("Admin/Categorie/Edit/{id}")]
