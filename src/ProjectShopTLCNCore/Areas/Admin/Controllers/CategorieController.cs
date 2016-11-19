@@ -86,9 +86,7 @@ namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 		[HttpPost("Admin/Categorie/ChangeIsDisplay/{id}")]
 		public JsonResult ChangeIsDisplay(long id)
 		{
-
-			var result = new CategorieDao(db).ChangeStatus(id);
-			
+			var result = new CategorieDao(db).ChangeStatus(id);		
 			return Json(new
 			{
 				status = result

@@ -24,7 +24,7 @@ namespace ProjectShopTLCNCore.Models
         public string Note { get; set; }
         public string Picture { get; set; }
         public bool? IsNew { get; set; }
-        public bool? IsDelete { get; set; }
+        public bool IsDelete { get; set; }
         public double? AvgRating { get; set; }
 
         public virtual ICollection<OrderDetails> OrderDetails { get; set; }

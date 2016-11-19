@@ -3,7 +3,7 @@
 		cate.registerEvents();
 	},
 	registerEvents: function () {
-		$('.btn').off('click').on('click', function (e) {
+		$('.btn-success').off('click').on('click', function (e) {
 			e.preventDefault();
 			var btn = $(this);
 			var id = btn.data('id');
