@@ -28,7 +28,7 @@ namespace ProjectShopTLCNCore.Models
         public string CoverPicture { get; set; }
         public int Lpoint { get; set; }
         public int? ReferUserId { get; set; }
-        public bool? IsActive { get; set; }
+        public bool IsActive { get; set; }
         public string Token { get; set; }
 
         public virtual ICollection<Attendance> Attendance { get; set; }

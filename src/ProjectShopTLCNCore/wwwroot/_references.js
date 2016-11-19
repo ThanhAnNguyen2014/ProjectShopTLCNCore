@@ -1133,4 +1133,5 @@
 /// <reference path="lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js" />
 /// <reference path="myjs/categorie.js" />
 /// <reference path="myjs/jquery.unobtrusive-ajax.min.js" />
+/// <reference path="myjs/myuser.js" />
 /// <reference path="systemjs.config.js" />
