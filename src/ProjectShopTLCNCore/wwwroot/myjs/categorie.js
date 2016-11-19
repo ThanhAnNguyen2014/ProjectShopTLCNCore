@@ -3,7 +3,7 @@
 		cate.registerEvents();
 	},
 	registerEvents: function () {
-		$('.btn-active').off('click').on('click', function (e) {
+		$('.btn').off('click').on('click', function (e) {
 			e.preventDefault();
 			var btn = $(this);
 			var id = btn.data('id');
@@ -16,9 +16,13 @@
 					console.log(response);
 					if (response.status == true) {
 						btn.text('Kích hoạt');
+						btn.removeClass('red');
+						btn.addClass('#4cae4c');
 					}
 					else {
 						btn.text('Khoá');
+						btn.removeClass('4cae4c');
+						btn.addClass('red');
 					}
 				}
 			});
