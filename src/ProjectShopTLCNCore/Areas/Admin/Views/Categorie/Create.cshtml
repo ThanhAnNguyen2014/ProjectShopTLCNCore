@@ -33,7 +33,7 @@
 				</div>
 			</div>
 			<div class="box-content">
-				@using (Html.BeginForm("Create", "Categorie", FormMethod.Post, new {@class= "form-horizontal" }))
+				@using (Html.BeginForm("Create", "Categorie", FormMethod.Post, new { enctype = "multipart/form-data" ,@class = "form-horizontal" }))
 				{
 					@*<form class="form-horizontal" action="Create" method="post">*@
 						<fieldset>
@@ -55,7 +55,7 @@
 								<label class="control-label" for="fileInput">Chọn ảnh</label>
 								<div class="controls">
 									@*<input class="input-file uniform_on" id="Picture" asp-for="Picture" type="file">*@
-									@Html.TextBoxFor(model => model.Picture, htmlAttributes: new { @class = "input-file uniform_on", @id = "Picture", @type = "file" })
+									@Html.TextBoxFor(model => model.Picture, htmlAttributes: new { @class = "input-file uniform_on", @id = "Picture", @type = "file", @name= "files" })
 								</div>
 							</div>
 							<div class="control-group">

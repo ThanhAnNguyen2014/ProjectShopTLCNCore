@@ -44,7 +44,9 @@
     "Microsoft.AspNetCore.Http.Extensions": "1.0.0",
     "Microsoft.jQuery.Unobtrusive.Ajax": "3.2.3",
   "jQuery": "3.1.1",
-  "Microsoft.NETCore": "5.0.1-rc2-24027"
+  "Microsoft.NETCore": "5.0.1-rc2-24027",
+  "System.Drawing.Primitives": "4.3.0",
+  "CoreCompat.System.Drawing": "1.0.0-beta006"
   },
 
   "tools": {

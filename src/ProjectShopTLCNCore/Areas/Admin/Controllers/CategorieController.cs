@@ -6,16 +6,24 @@ using Microsoft.AspNetCore.Mvc;
 using ProjectShopTLCNCore.Models;
 using Microsoft.EntityFrameworkCore;
 using ProjectShopTLCNCore.Areas.Admin.Dao;
+using Microsoft.AspNetCore.Http;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 {
 	[Area("Admin")]
 	public class CategorieController : Controller
 	{
+		private IHostingEnvironment _environment;
 		ProjectShopAPIContext db;
-		public CategorieController(ProjectShopAPIContext _db)
+		public CategorieController(ProjectShopAPIContext _db, IHostingEnvironment environment)
 		{
 			db = _db;
+			_environment = environment;
 		}
 		[HttpGet]
 		public async Task<IActionResult> Index()
@@ -29,11 +37,25 @@ namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 			return View();
 		}
 		[HttpPost]
-		public IActionResult Create(Categories categorie)
+		public IActionResult Create(Categories categorie, ICollection<IFormFile> files)
 		{
-
+			string tempImageURL = "";
+			
 			if (ModelState.IsValid)
 			{
+
+				var uploads = Path.Combine(_environment.WebRootPath, "Image/categories");
+				foreach (var file in files)
+				{
+					if (file != null)
+					{
+						string URL =uploads+"/"+file.FileName;
+						Bitmap img = ResizeImage(Image.FromStream(file.OpenReadStream(), true, true), 620, 740);
+						img.Save(URL);
+						tempImageURL += URL+";";
+					}
+				}
+				categorie.Picture = tempImageURL;
 				db.Categories.Add(categorie);
 				db.SaveChanges();
 				return RedirectToAction("Index");
@@ -41,15 +63,32 @@ namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 			return View(categorie);
 		}
 		[HttpPost("Admin/Categorie/Edit/{id}")]
-		public IActionResult Edit(int id, Categories catego)
+		public IActionResult Edit(int id, Categories catego, ICollection<IFormFile> files)
 		{
+			string tempImageURL = "";
 			var categorie = db.Categories.SingleOrDefault(m => m.CategoryId == id);
+
+			if(categorie!=null)
+			{
+				var uploads = Path.Combine(_environment.WebRootPath, "Image/categories");
+				foreach (var file in files)
+				{
+					if (file != null)
+					{
+						string URL = uploads + "/" + file.FileName;
+						Bitmap img = ResizeImage(Image.FromStream(file.OpenReadStream(), true, true), 620, 740);
+						img.Save(URL);
+						tempImageURL += "~/Image/categories/"+ file.FileName;
+						
+					}
+				}
+			}
 
 			categorie.CategoryName = catego.CategoryName;
 			categorie.Description = catego.Description;
 			categorie.DisplayOrder = catego.DisplayOrder;
 			categorie.IsDisplay = catego.IsDisplay;
-			categorie.Picture = catego.Picture;
+			categorie.Picture = tempImageURL;
 			db.Categories.Update(categorie);
 			db.SaveChanges();
 			return RedirectToAction("Index");
@@ -82,16 +121,40 @@ namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 			return RedirectToAction("Index");
 		}
 
-		// change Status
+		//// change Status
 		[HttpPost("Admin/Categorie/ChangeIsDisplay/{id}")]
 		public JsonResult ChangeIsDisplay(long id)
 		{
-			var result = new CategorieDao(db).ChangeStatus(id);		
+			var result = new CategorieDao(db).ChangeStatus(id);
 			return Json(new
 			{
 				status = result
 			});
 		}
+		// Pitmap Images
+		public static Bitmap ResizeImage(Image image, int width, int height)
+		{
+			var destRect = new Rectangle(0, 0, width, height);
+			var destImage = new Bitmap(width, height);
 
+			destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+			using (var graphics = Graphics.FromImage(destImage))
+			{
+				graphics.CompositingMode = CompositingMode.SourceCopy;
+				graphics.CompositingQuality = CompositingQuality.HighQuality;
+				graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+				graphics.SmoothingMode = SmoothingMode.HighQuality;
+				graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+				using (var wrapMode = new ImageAttributes())
+				{
+					wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+					graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+				}
+			}
+
+			return destImage;
+		}
 	}
 }
