@@ -22,8 +22,8 @@ namespace ProjectShopTLCNCore.Areas.Admin.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
-            var projectShopAPIContext = _context.Products.Include(p => p.Category).Include(p => p.Supplier);
-            return View(await projectShopAPIContext.ToListAsync());
+            var model = _context.Products.Include(p => p.Category).Include(p => p.Supplier);
+            return View(await model.ToListAsync());
         }
 
         // GET: Products/Details/5

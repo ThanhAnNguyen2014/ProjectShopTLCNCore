@@ -12,6 +12,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using ProjectShopTLCNCore.Areas.Admin.Utili;
 
 namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 {
@@ -50,9 +51,9 @@ namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 					if (file != null)
 					{
 						string URL =uploads+"/"+file.FileName;
-						Bitmap img = ResizeImage(Image.FromStream(file.OpenReadStream(), true, true), 620, 740);
+						Bitmap img = convertImage.ResizeImage(Image.FromStream(file.OpenReadStream(), true, true), 620, 740);
 						img.Save(URL);
-						tempImageURL += URL+";";
+						tempImageURL += "~/Image/categories/" + file.FileName;
 					}
 				}
 				categorie.Picture = tempImageURL;
@@ -76,7 +77,7 @@ namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 					if (file != null)
 					{
 						string URL = uploads + "/" + file.FileName;
-						Bitmap img = ResizeImage(Image.FromStream(file.OpenReadStream(), true, true), 620, 740);
+						Bitmap img = convertImage.ResizeImage(Image.FromStream(file.OpenReadStream(), true, true), 400, 400);
 						img.Save(URL);
 						tempImageURL += "~/Image/categories/"+ file.FileName;
 						
@@ -132,29 +133,29 @@ namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 			});
 		}
 		// Pitmap Images
-		public static Bitmap ResizeImage(Image image, int width, int height)
-		{
-			var destRect = new Rectangle(0, 0, width, height);
-			var destImage = new Bitmap(width, height);
+		//public static Bitmap ResizeImage(Image image, int width, int height)
+		//{
+		//	var destRect = new Rectangle(0, 0, width, height);
+		//	var destImage = new Bitmap(width, height);
 
-			destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+		//	destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
 
-			using (var graphics = Graphics.FromImage(destImage))
-			{
-				graphics.CompositingMode = CompositingMode.SourceCopy;
-				graphics.CompositingQuality = CompositingQuality.HighQuality;
-				graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
-				graphics.SmoothingMode = SmoothingMode.HighQuality;
-				graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+		//	using (var graphics = Graphics.FromImage(destImage))
+		//	{
+		//		graphics.CompositingMode = CompositingMode.SourceCopy;
+		//		graphics.CompositingQuality = CompositingQuality.HighQuality;
+		//		graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+		//		graphics.SmoothingMode = SmoothingMode.HighQuality;
+		//		graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
 
-				using (var wrapMode = new ImageAttributes())
-				{
-					wrapMode.SetWrapMode(WrapMode.TileFlipXY);
-					graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
-				}
-			}
+		//		using (var wrapMode = new ImageAttributes())
+		//		{
+		//			wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+		//			graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+		//		}
+		//	}
 
-			return destImage;
-		}
+		//	return destImage;
+		//}
 	}
 }

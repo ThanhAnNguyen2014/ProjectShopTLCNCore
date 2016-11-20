@@ -54,7 +54,8 @@
 						<div class="control-group">
 							<label class="control-label" for="fileInput">Chọn ảnh:</label>
 							<div class="controls">
-								<input class="input-file uniform_on" id="Picture" asp-for="Picture" type="file", name="files" multiple>
+								<input class="input-file uniform_on" id="Picture" asp-for="Picture" type="file", name="files" multiple >
+								<img src="@Url.Content(Model.Picture)" width="5%" height="5%" />
 								@*@Html.TextBoxFor(model => model.Picture, htmlAttributes: new { @class = "input-file uniform_on", @id = "Picture", @type = "file", @name = "files" })*@
 							</div>
 						</div>
