@@ -1,2 +1,8 @@
-System.register(["@angular/platform-browser-dynamic","./app.module"],function(exports_1,context_1){"use strict";var platform_browser_dynamic_1,app_module_1;context_1&&context_1.id;return{setters:[function(platform_browser_dynamic_1_1){platform_browser_dynamic_1=platform_browser_dynamic_1_1},function(app_module_1_1){app_module_1=app_module_1_1}],execute:function(){platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(app_module_1.AppModule)}}});
+"use strict";
+// The browser platform with a compiler
+var platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
+// The app module
+var app_module_1 = require('./app.module');
+// Compile and launch the module
+platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(app_module_1.AppModule);
 //# sourceMappingURL=main.js.map
