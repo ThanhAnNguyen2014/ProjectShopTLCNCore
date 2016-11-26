@@ -1,20 +1,17 @@
-﻿import { Component } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'my-app',
-    template: `
-    <app-title [subtitle]="subtitle"></app-title>
-    <nav>
-      <a routerLink="contact" routerLinkActive="active">Contact</a>
-      <a routerLink="crisis"  routerLinkActive="active">Crisis Center</a>
-      <a routerLink="heroes"  routerLinkActive="active">Heroes</a>
-    </nav>
-    <router-outlet></router-outlet>
-  `
+    //template:
+    //  `<h1>Absolute & <i>Component-Relative</i> Paths</h1>
+
+    //<home-app></home-app>
+    //  `
+    moduleId: module.id,
+    templateUrl: 'home.component.html',
+    styleUrls: ['home.component.css']
 })
-export class AppComponent {
-    subtitle = '(Final)';
-}
+export class AppComponent { }
 
 
 /*

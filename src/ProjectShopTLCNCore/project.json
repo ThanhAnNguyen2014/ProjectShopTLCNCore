@@ -75,7 +75,14 @@
 
   "buildOptions": {
     "emitEntryPoint": true,
-    "preserveCompilationContext": true
+    "preserveCompilationContext": true,
+    "compile": {
+      "exclude": [
+        "node_modules\\selenium-webdriver\\**\\*.cs",
+        "wwwroot\\node_modules\\**"
+      ]
+
+    }
   },
 
   "runtimeOptions": {
