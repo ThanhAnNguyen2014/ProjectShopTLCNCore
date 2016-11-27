@@ -11,15 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var app_component_1 = require('./app.component');
-var header_component_1 = require('./Header/header.component');
-var footer_component_1 = require('./Footer/footer.component');
-var contact_component_1 = require('./contact/contact.component');
-var slide_component_1 = require('./Slide/slide.component');
-var service_component_1 = require('./service/service.component');
-var product_component_1 = require('./product/product.component');
-var about_component_1 = require('./about/about.component');
-var gallery_component_1 = require('./gallery/gallery.component');
-var cart_component_1 = require('./Cart/cart.component');
+//import { SomeAbsoluteComponent, SomeRelativeComponent } from './some.component';
+var home_component_1 = require('./home.component');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -30,15 +23,9 @@ var AppModule = (function () {
             ],
             declarations: [
                 app_component_1.AppComponent,
-                header_component_1.HeaderComponent,
-                slide_component_1.SlideComponent,
-                product_component_1.ProductComponent,
-                service_component_1.ServiceComponent,
-                about_component_1.AboutComponent,
-                contact_component_1.ContactComponent,
-                gallery_component_1.GalleryComponent,
-                footer_component_1.FooterComponent,
-                cart_component_1.CartComponent
+                //SomeAbsoluteComponent,
+                //  SomeRelativeComponent,
+                home_component_1.HomeComponent
             ],
             bootstrap: [app_component_1.AppComponent]
         }), 

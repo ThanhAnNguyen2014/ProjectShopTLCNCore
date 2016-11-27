@@ -229,6 +229,10 @@ h2 span
 #contact label
 	{
 		font-weight: 500;
+		color: #fff;
+	}
+	#contact p,span,i,h4,h2{
+			color: #fff;
 	}
 #contact input
 	{
@@ -281,6 +285,7 @@ h2 span
 #copyright p
 	{
 		font-weight: 400;
+
 	}
 /* end copyright */
 /*start Home*/

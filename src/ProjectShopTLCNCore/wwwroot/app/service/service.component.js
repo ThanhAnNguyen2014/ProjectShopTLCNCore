@@ -9,19 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var HomeComponent = (function () {
-    function HomeComponent() {
+var ServiceComponent = (function () {
+    function ServiceComponent() {
     }
-    HomeComponent = __decorate([
+    ServiceComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'home-app',
-            templateUrl: 'home.component.html',
-            styleUrls: ['home.component.css']
+            selector: 'my-service',
+            templateUrl: 'service.component.html',
+            styleUrls: ['service.component.css']
         }), 
         __metadata('design:paramtypes', [])
-    ], HomeComponent);
-    return HomeComponent;
+    ], ServiceComponent);
+    return ServiceComponent;
 }());
-exports.HomeComponent = HomeComponent;
-//# sourceMappingURL=home.component.js.map
+exports.ServiceComponent = ServiceComponent;
+//# sourceMappingURL=service.component.js.map

@@ -9,22 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var SlideComponent = (function () {
+    function SlideComponent() {
     }
-    AppComponent = __decorate([
+    SlideComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: "\n            <my-header></my-header>\n            <my-slide></my-slide>\n            <my-product></my-product>\n            <my-service></my-service>\n            <my-about></my-about>\n            <my-gallery></my-gallery>\n            <my-contact></my-contact>\n            <my-footer></my-footer>\n            <my-cart></my-cart>\n"
+            moduleId: module.id,
+            selector: 'my-slide',
+            templateUrl: 'slide.component.html',
+            styleUrls: ['slide.component.css']
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], SlideComponent);
+    return SlideComponent;
 }());
-exports.AppComponent = AppComponent;
-/*
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/ 
-//# sourceMappingURL=app.component.js.map
+exports.SlideComponent = SlideComponent;
+//# sourceMappingURL=slide.component.js.map

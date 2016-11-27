@@ -15,7 +15,13 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n            <my-header></my-header>\n            <my-slide></my-slide>\n            <my-product></my-product>\n            <my-service></my-service>\n            <my-about></my-about>\n            <my-gallery></my-gallery>\n            <my-contact></my-contact>\n            <my-footer></my-footer>\n            <my-cart></my-cart>\n"
+            //template:
+            //  `<h1>Absolute & <i>Component-Relative</i> Paths</h1>
+            //<home-app></home-app>
+            //  `
+            moduleId: module.id,
+            templateUrl: 'home.component.html',
+            styleUrls: ['home.component.css']
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

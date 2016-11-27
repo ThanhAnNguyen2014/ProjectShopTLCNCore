@@ -9,22 +9,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var CartComponent = (function () {
+    function CartComponent() {
     }
-    AppComponent = __decorate([
+    CartComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: "\n            <my-header></my-header>\n            <my-slide></my-slide>\n            <my-product></my-product>\n            <my-service></my-service>\n            <my-about></my-about>\n            <my-gallery></my-gallery>\n            <my-contact></my-contact>\n            <my-footer></my-footer>\n            <my-cart></my-cart>\n"
+            moduleId: module.id,
+            selector: 'my-cart',
+            templateUrl: 'cart.component.html',
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], CartComponent);
+    return CartComponent;
 }());
-exports.AppComponent = AppComponent;
-/*
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/ 
-//# sourceMappingURL=app.component.js.map
+exports.CartComponent = CartComponent;
+//# sourceMappingURL=cart.component.js.map

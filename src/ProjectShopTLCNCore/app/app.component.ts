@@ -2,14 +2,18 @@ import { Component } from '@angular/core';
 
 @Component({
     selector: 'my-app',
-    //template:
-    //  `<h1>Absolute & <i>Component-Relative</i> Paths</h1>
+    template:`
+            <my-header></my-header>
+            <my-slide></my-slide>
+            <my-product></my-product>
+            <my-service></my-service>
+            <my-about></my-about>
+            <my-gallery></my-gallery>
+            <my-contact></my-contact>
+            <my-footer></my-footer>
+            <my-cart></my-cart>
+`
 
-    //<home-app></home-app>
-    //  `
-    moduleId: module.id,
-    templateUrl: 'home.component.html',
-    styleUrls: ['home.component.css']
 })
 export class AppComponent { }
 
