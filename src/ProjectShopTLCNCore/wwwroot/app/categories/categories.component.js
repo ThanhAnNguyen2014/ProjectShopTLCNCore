@@ -9,28 +9,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var CategoriesComponent = (function () {
+    function CategoriesComponent() {
     }
-    AppComponent = __decorate([
+    CategoriesComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            //template:
-            //  `<h1>Absolute & <i>Component-Relative</i> Paths</h1>
-            //<home-app></home-app>
-            //  `
             moduleId: module.id,
-            templateUrl: 'home.component.html',
-            styleUrls: ['home.component.css']
+            selector: 'my-categories',
+            templateUrl: 'categories.component.html',
+            styleUrls: ['categories.component.css']
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], CategoriesComponent);
+    return CategoriesComponent;
 }());
-exports.AppComponent = AppComponent;
-/*
-Copyright 2016 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/ 
-//# sourceMappingURL=app.component.js.map
+exports.CategoriesComponent = CategoriesComponent;
+//# sourceMappingURL=categories.component.js.map

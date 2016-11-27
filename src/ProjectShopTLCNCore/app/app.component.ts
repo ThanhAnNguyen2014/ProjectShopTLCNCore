@@ -4,12 +4,6 @@ import { Component } from '@angular/core';
     selector: 'my-app',
     template:`
             <my-header></my-header>
-            <my-slide></my-slide>
-            <my-product></my-product>
-            <my-service></my-service>
-            <my-about></my-about>
-            <my-gallery></my-gallery>
-            <my-contact></my-contact>
             <my-footer></my-footer>
             <my-cart></my-cart>
 `

@@ -14,8 +14,7 @@
   "compileOnSave": true,
   "exclude": [
     "wwwroot",
-    "node_modules/*",
-    "**/*-aot.ts"
+    "node_modules/*"
   ]
 
 }
