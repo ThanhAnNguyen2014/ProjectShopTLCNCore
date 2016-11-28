@@ -1,5 +1,5 @@
 ﻿import { Component } from '@angular/core';
-
+declare var jQuery: any;
 @Component({
     moduleId: module.id,
     selector: 'my-slide',
