@@ -46,8 +46,7 @@
   "jQuery": "3.1.1",
   "Microsoft.NETCore": "5.0.1-rc2-24027",
   "System.Drawing.Primitives": "4.3.0",
-  "CoreCompat.System.Drawing": "1.0.0-beta006"
-  },
+  "CoreCompat.System.Drawing": "1.0.0-beta006"  },
 
   "tools": {
     "BundlerMinifier.Core": "2.0.238",
