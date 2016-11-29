@@ -68,14 +68,14 @@
 							<tr>
 								<td class="center">@item.ProductId</td>
 								<td class="center">@item.ProductName</td>
-								<td class="center">@item.UnitPrice</td>
+								<td class="center">@item.UnitPrice.GetValueOrDefault().ToString("000,0") ₫</td>
 								<td class="center">@item.Supplier.CompanyName</td>
 								<td class="center">
 									<img src="@Url.Content(@listImage[0])" class="img-responsive" width="100" height="100">
 								</td>
 								<td class="center"><a href="#" class="btn btn-info" data-id="@item.ProductId">@Html.Raw(item.IsDelete ? "Click Hiện" : "Click Ẩn")</a></td>
 								<td class="center">
-									<a class="btn btn-info" href="/Admin/Products/Edit/@item.ProductId">
+									<a class="btn btn-primary" href="/Admin/Products/Edit/@item.ProductId">
 										<i class="halflings-icon white edit"></i>
 									</a>
 									<a class="btn btn-success" href="/Admin/Products/Details/@item.ProductId">

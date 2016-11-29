@@ -2,7 +2,6 @@
 /// <reference path="../karma.conf.js" />
 /// <reference path="../karma-test-shim.js" />
 /// <reference path="../protractor.config.js" />
-/// <reference path="../systemjs.config.extras.js" />
 /// <reference path="app/about/about.component.js" />
 /// <reference path="app/app.component.js" />
 /// <reference path="app/app.module.js" />

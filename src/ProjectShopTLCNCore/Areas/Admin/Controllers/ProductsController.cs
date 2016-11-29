@@ -35,6 +35,7 @@ namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 		}
 
 		// GET: Products/Details/5
+		[HttpGet("Admin/Products/Details/{id}")]
 		public async Task<IActionResult> Details(int? id)
 		{
 			if (id == null)
@@ -43,6 +44,11 @@ namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 			}
 
 			var products = await _context.Products.SingleOrDefaultAsync(m => m.ProductId == id);
+			var category =await _context.Categories.SingleOrDefaultAsync(m => m.CategoryId == products.CategoryId);
+			var supplier = await _context.Suppliers.SingleOrDefaultAsync(m=>m.SupplierId== products.SupplierId);
+			ViewData["catename"] = category.CategoryName;
+			ViewData["supplier"] = supplier.CompanyName;
+
 			if (products == null)
 			{
 				return NotFound();
@@ -95,6 +101,7 @@ namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 		}
 
 		// GET: Products/Edit/5
+		[HttpGet("Admin/Products/Edit/{id}")]
 		public async Task<IActionResult> Edit(int? id)
 		{
 			if (id == null)
@@ -115,21 +122,49 @@ namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 		// POST: Products/Edit/5
 		// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-		[HttpPost]
+		[HttpPost("Admin/Products/Edit/{id}")]
 		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Edit(int id, [Bind("ProductId,AvgRating,CategoryId,Discontinued,Discount,IsDelete,IsNew,Note,Picture,ProductName,ReorderLevel,SupplierId,UnitPrice,UnitsInStock")] Products products)
+		public async Task<IActionResult> Edit(int id,
+			[Bind("ProductId,AvgRating,CategoryId,Discontinued,Discount,IsDelete,IsNew,Note,Picture,ProductName,ReorderLevel,SupplierId,UnitPrice,UnitsInStock")] Products products,
+			ICollection<IFormFile> files)
 		{
-			if (id != products.ProductId)
-			{
-				return NotFound();
-			}
 
+			string tempImageURL = "";
+			var product = _context.Products.SingleOrDefault(m => m.ProductId == id);	
 			if (ModelState.IsValid)
 			{
 				try
 				{
-					_context.Update(products);
-					await _context.SaveChangesAsync();
+					if (product != null)
+					{
+						var uploads = Path.Combine(_environment.WebRootPath, "Image/products");
+						foreach (var file in files)
+						{
+							if (file != null)
+							{
+								string URL = uploads + "/" + file.FileName;
+								Bitmap img = convertImage.ResizeImage(Image.FromStream(file.OpenReadStream(), true, true), 400, 400);
+								img.Save(URL);
+								tempImageURL += "~/Image/products/" + file.FileName + ";";
+							}
+						}
+						product.ProductName = products.ProductName;
+						product.Note = products.Note;
+						product.Picture = tempImageURL;
+						product.CategoryId = products.CategoryId;
+						product.UnitPrice = products.UnitPrice;
+						product.UnitsInStock = products.UnitsInStock;
+						product.Discount = products.Discount;
+						product.SupplierId = products.SupplierId;
+						product.ReorderLevel = products.ReorderLevel;
+						product.Discontinued = false;
+						product.IsNew = true;
+						product.IsDelete = false;
+						product.AvgRating = 0;
+						_context.Update(product);
+						await _context.SaveChangesAsync();
+						return RedirectToAction("Index");
+					}
 				}
 				catch (DbUpdateConcurrencyException)
 				{
@@ -139,10 +174,9 @@ namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 					}
 					else
 					{
-						throw;
+						return RedirectToAction("Error");
 					}
 				}
-				return RedirectToAction("Index");
 			}
 			ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName", products.CategoryId);
 			ViewData["SupplierId"] = new SelectList(_context.Suppliers, "SupplierId", "CompanyName", products.SupplierId);
