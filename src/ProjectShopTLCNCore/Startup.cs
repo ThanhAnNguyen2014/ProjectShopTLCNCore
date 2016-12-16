@@ -66,6 +66,8 @@ namespace ProjectShopTLCNCore
 			});
 
 			services.AddMvc();
+			services.AddDistributedMemoryCache();
+			services.AddSession();
 
 
 			// Add application services.
@@ -95,6 +97,7 @@ namespace ProjectShopTLCNCore
 
 			app.UseDefaultFiles();
 			app.UseStaticFiles();
+			app.UseSession();
 
             //app.UseIdentity();
 

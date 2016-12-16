@@ -46,7 +46,10 @@
   "jQuery": "3.1.1",
   "Microsoft.NETCore": "5.0.1-rc2-24027",
   "System.Drawing.Primitives": "4.3.0",
-  "CoreCompat.System.Drawing": "1.0.0-beta006"  },
+  "CoreCompat.System.Drawing": "1.0.0-beta006",
+  "Microsoft.AspNetCore.Session": "1.0.0",
+  "Microsoft.AspNetCore.Http.Abstractions": "1.1.0",
+  "Microsoft.Extensions.Caching.Memory": "1.1.0"  },
 
   "tools": {
     "BundlerMinifier.Core": "2.0.238",

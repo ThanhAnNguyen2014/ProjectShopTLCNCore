@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<!-- start: Meta -->
@@ -132,8 +133,11 @@
 								<li class="dropdown-menu-title">
 									<span>Account Settings</span>
 								</li>
-								<li><a href="#"><i class="halflings-icon user"></i> Profile</a></li>
-								<li><a href="login.html"><i class="halflings-icon off"></i> Logout</a></li>
+								@if (Context.Session.GetString("UserID") != null)
+								{								
+									<li><a href="@Url.Action("Logout","Login")" ><i class="halflings-icon off"></i> Logout</a></li>
+								}
+								
 							</ul>
 						</li>
 						<!-- end: User Dropdown -->
