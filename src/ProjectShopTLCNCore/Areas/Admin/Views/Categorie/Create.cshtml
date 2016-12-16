@@ -5,7 +5,9 @@
 	Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-
+@section scripts{
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
+}
 <!-- start: Content -->
 <div id="content" class="span10">
 
@@ -51,12 +53,23 @@
 									@Html.TextAreaFor(model=>model.Description, htmlAttributes: new { @class = "cleditor", @id = "Description", @rows = "3" } )
 								</div>
 							</div>
-							<div class="control-group">
+							@*<div class="control-group">
 								<label class="control-label" for="fileInput">Chọn ảnh</label>
-								<div class="controls">
-									@*<input class="input-file uniform_on" id="Picture" asp-for="Picture" type="file">*@
-									@*@Html.TextBoxFor(model => model.Picture, htmlAttributes: new { @class = "input-file uniform_on", @id = "Picture", @type = "file", @name= "files" })*@
+								<div class="controls">									
 									<input class="input-file uniform_on" id="Picture" asp-for="Picture" type="file"  name="files" multiple>
+								</div>
+							</div>*@
+							<div class="control-group">
+								<label class="control-label">Chọn ảnh: </label><br />
+								<div class="controls fileinput fileinput-new" data-provides="fileinput">
+									<div class="fileinput-preview thumbnail" data-trigger="fileinput"
+										 style="width: 200px; height: 150px;"></div>
+									<div class="controls-label">
+										<input class="input-file uniform_on" id="Picture" type="file" asp-for="Picture" name="files">
+										<p></p>
+										<a href="#" class="btn btn-success fileinput-exists"
+										   data-dismiss="fileinput">Remove</a>
+									</div>
 								</div>
 							</div>
 							<div class="control-group">
