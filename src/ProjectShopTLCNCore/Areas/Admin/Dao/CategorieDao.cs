@@ -16,6 +16,7 @@ namespace ProjectShopTLCNCore.Areas.Admin.Dao
 		}
 		public bool ChangeStatus(long id)
 		{
+
 			var cate = db.Categories.SingleOrDefault(x => x.CategoryId == id);
 			cate.IsDisplay = !cate.IsDisplay;
 			db.SaveChanges();

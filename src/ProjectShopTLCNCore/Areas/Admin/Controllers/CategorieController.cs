@@ -13,9 +13,11 @@ using System.Drawing.Imaging;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using ProjectShopTLCNCore.Areas.Admin.Utili;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 {
+	
 	[Area("Admin")]
 	public class CategorieController : Controller
 	{
@@ -29,17 +31,29 @@ namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 		[HttpGet]
 		public async Task<IActionResult> Index()
 		{
+			if (HttpContext.Session.GetString("UserID") == null && HttpContext.Session.GetString("Email") == null)
+			{
+				return RedirectToAction("Index", "Login");
+			}
 			return View(await db.Categories.ToListAsync());
 
 		}
 		[HttpGet]
 		public IActionResult Create()
 		{
+			if (HttpContext.Session.GetString("UserID") == null && HttpContext.Session.GetString("Email") == null)
+			{
+				return RedirectToAction("Index", "Login");
+			}
 			return View();
 		}
 		[HttpPost]
 		public IActionResult Create(Categories categorie, ICollection<IFormFile> files)
 		{
+			if (HttpContext.Session.GetString("UserID") == null && HttpContext.Session.GetString("Email") == null)
+			{
+				return RedirectToAction("Index", "Login");
+			}
 			string tempImageURL = "";
 			
 			if (ModelState.IsValid)
@@ -66,6 +80,10 @@ namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 		[HttpPost("Admin/Categorie/Edit/{id}")]
 		public IActionResult Edit(int id, Categories catego, ICollection<IFormFile> files)
 		{
+			if (HttpContext.Session.GetString("UserID") == null && HttpContext.Session.GetString("Email") == null)
+			{
+				return RedirectToAction("Index", "Login");
+			}
 			string tempImageURL = "";
 			var categorie = db.Categories.SingleOrDefault(m => m.CategoryId == id);
 
@@ -101,6 +119,10 @@ namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 		[HttpGet("Admin/Categorie/Edit/{id}")]
 		public async Task<IActionResult> Edit(int? id)
 		{
+			if (HttpContext.Session.GetString("UserID") == null && HttpContext.Session.GetString("Email") == null)
+			{
+				return RedirectToAction("Index", "Login");
+			}
 			if (id == null)
 				return NotFound();
 			var model = await db.Categories.SingleOrDefaultAsync(m => m.CategoryId == id);
@@ -115,6 +137,10 @@ namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 		[HttpGet("Admin/Categorie/Delete/{id}")]
 		public IActionResult Delete(int? id)
 		{
+			if (HttpContext.Session.GetString("UserID") == null && HttpContext.Session.GetString("Email") == null)
+			{
+				return RedirectToAction("Index", "Login");
+			}
 			var model = db.Categories.SingleOrDefault(m => m.CategoryId == id);
 			// Remove the car from the collection and save changes
 			db.Categories.Remove(model);
@@ -126,6 +152,13 @@ namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 		[HttpPost("Admin/Categorie/ChangeIsDisplay/{id}")]
 		public JsonResult ChangeIsDisplay(long id)
 		{
+			if (HttpContext.Session.GetString("UserID") == null && HttpContext.Session.GetString("Email") == null)
+			{
+				return Json(new
+				{
+					status = 0
+				});
+			}
 			var result = new CategorieDao(db).ChangeStatus(id);
 			return Json(new
 			{

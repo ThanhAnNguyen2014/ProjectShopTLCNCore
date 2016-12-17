@@ -21,11 +21,11 @@ namespace ProjectShopTLCNCore.Areas.Admin.Controllers
 		// GET: /<controller>/
 		public IActionResult Index()
 		{
-			if(HttpContext.Session.GetString("UserID") != null && HttpContext.Session.GetString("Email")!=null)
+			if(HttpContext.Session.GetString("UserID") == null && HttpContext.Session.GetString("Email")==null)
 			{
-				return View();
+				return RedirectToAction("Index", "Login");
 			}
-			return RedirectToAction("Index","Login");
+			return View();
 		}
 	}
 }
