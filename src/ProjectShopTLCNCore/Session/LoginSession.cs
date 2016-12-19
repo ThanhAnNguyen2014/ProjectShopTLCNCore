@@ -23,7 +23,7 @@ namespace ProjectShopTLCNCore.Session
     }
 	public class LoginAdminSession
 	{
-		private static string sessionkey="Admin";
+		//private static string sessionkey="Admin";
 
 		public UserInfor userInfo { get; set; }
 		private LoginAdminSession()

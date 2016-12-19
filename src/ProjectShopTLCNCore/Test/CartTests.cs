@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Xunit;
 namespace ProjectShopTLCNCore.Test
 {
     public class CartTests
@@ -32,8 +32,8 @@ namespace ProjectShopTLCNCore.Test
 		public void Can_Add_Quantity_For_Existing_Lines()
 		{
 			// Arrange - create some test products
-			Products p1 = new Products { ProductID = 1, Name = "P1" };
-			Products p2 = new Products { ProductID = 2, Name = "P2" };
+			Products p1 = new Products { ProductId = 1, ProductName = "P1" };
+			Products p2 = new Products { ProductId = 2, ProductName = "P2" };
 			// Arrange - create a new cart
 			CartFull target = new CartFull();
 			// Act

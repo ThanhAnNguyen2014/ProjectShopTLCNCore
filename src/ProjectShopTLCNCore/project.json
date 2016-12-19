@@ -1,11 +1,13 @@
 {
   //"userSecretsId": "aspnet-ProjectShopTLCNCore-58ce39af-4986-48bd-a678-195845c8aa08",
-
- "dependencies": {
+  "testRunner": "xunit",
+  "dependencies": {
     "Microsoft.NETCore.App": {
       "version": "1.0.1",
       "type": "platform"
     },
+    "xunit": "2.1.0",
+    "dotnet-test-xunit": "2.2.0-preview2-build1029",
     "Microsoft.ApplicationInsights.AspNetCore": "1.0.0",
     "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
     "Microsoft.AspNetCore.Diagnostics": "1.0.0",
@@ -49,7 +51,8 @@
     "CoreCompat.System.Drawing": "1.0.0-beta006",
     "Microsoft.AspNetCore.Session": "1.0.0",
     "Microsoft.AspNetCore.Http.Abstractions": "1.1.0",
-    "Microsoft.Extensions.Caching.Memory": "1.1.0"  },
+    "Microsoft.Extensions.Caching.Memory": "1.1.0"
+  },
 
   "tools": {
     "BundlerMinifier.Core": "2.0.238",

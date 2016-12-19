@@ -16,18 +16,18 @@ namespace ProjectShopTLCNCore.Controllers
 			return View();
 		}
 
-		public List<CartLine> GetCart()
-		{
-			
-			List<CartLine> listCart = HttpContext.Session.GetString("Cart") as List<CartLine>;
-			if (listCart == null)
-			{
-				// Khoi tao gio hang moi
-				listCart = new List<CartLine>();
-				HttpContext.Session.GetString("Cart") = listCart;
-			}
-			return listCart;
-		}
+		//public List<CartLine> GetCart()
+		//{
+
+		//	List<CartLine> listCart = HttpContext.Session.GetString("Cart") as List<CartLine>;
+		//	if (listCart == null)
+		//	{
+		//		Khoi tao gio hang moi
+		//	   listCart = new List<CartLine>();
+		//		HttpContext.Session.GetString("Cart") = listCart;
+		//	}
+		//	return listCart;
+		//}
 	}
       
 }
