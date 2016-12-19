@@ -9,8 +9,8 @@ namespace ProjectShopTLCNCore.Areas.Admin.Model
     public class UserLogin
     {
 		[Required]
+		[EmailAddress]
 		[DataType(DataType.EmailAddress)]
-		[StringLength(50,ErrorMessage ="{0} bạn nhập phải lớn hơn {2} ký tự!",MinimumLength =3)]
 		public string Email { get; set; }
 		[Required]
 		[DataType(DataType.Password)]
